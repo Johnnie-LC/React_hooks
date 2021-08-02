@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import '../assets/styles/components/Characters.css'
+import ThemeContext from '../context/ThemeContext'
 
 const Characters = () => {
   const [characters, setCharacters] = useState([])
@@ -19,8 +20,10 @@ const Characters = () => {
     // fetchData()
   }, [])
 
+  const { theme } = useContext(ThemeContext)
+
   return (
-    <div className="Characters">
+    <div className={`Characters ${theme ? 'lightmode' : 'darkmode'}`}>
       {characters.map((character) => (
         <article className="Card-container" key={character.id}>
           <img

@@ -5,12 +5,13 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import ThemeContext from './context/ThemeContext'
 // ThemeContext nos da un provider
+import { ThemeContextProvider } from './context/ThemeContext'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeContext.Provider value="blue">
+    <ThemeContextProvider>
       <App />
-    </ThemeContext.Provider>
+    </ThemeContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
