@@ -1,0 +1,22 @@
+.Characters {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.Card-container {
+  width: 300px;
+  margin: 10px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgb(205, 255, 243);
+  padding-bottom: 10px;
+}
+.Card-image {
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+.Card-name {
+  padding: 0 20px;
+}
