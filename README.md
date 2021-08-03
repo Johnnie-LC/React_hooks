@@ -1,6 +1,6 @@
 # Learning about React Hooks
 
-Testing different hooks, useEfect, useState, useContext, useReducer
+Testing different hooks, useEfect, useState, useContext, useReducer, useMemo
 
 ### Links
 
