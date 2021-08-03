@@ -1,5 +1,6 @@
 # Learning about React Hooks
-Testing different hooks, useEfect, useState, useContext
+
+Testing different hooks, useEfect, useState, useContext, useReducer
 
 ### Links
 
@@ -12,5 +13,6 @@ Testing different hooks, useEfect, useState, useContext
 - React Hooks
 
 ## Author
+
 - Twitter - [@Johnnie_ELC](https://www.twitter.com/Johnnie_ELC)
 - linkedIn - [@Johnnie_ELC](https://www.linkedin.com/in/johnnie-lopez-3343008/)
