@@ -80,7 +80,7 @@ const Characters = () => {
         isHidden={true}
         title="Favorites"
       />
-      <div className="Search">
+      <div className={`Search ${theme ? 'lightmode' : 'darkmode'}`}>
         <input type="text" value={search} onChange={handleSearch} />
       </div>
 
