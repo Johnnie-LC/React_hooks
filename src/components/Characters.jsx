@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useContext, useReducer } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useReducer,
+  useMemo,
+} from 'react'
 import '../assets/styles/components/Characters.css'
 import ThemeContext from '../context/ThemeContext'
 import CharacterItems from './CharacterItems'
@@ -22,6 +28,7 @@ const favoriteReducer = (state, action) => {
 const Characters = () => {
   const [characters, setCharacters] = useState([])
   const { theme } = useContext(ThemeContext)
+  const [search, setSearch] = useState('')
   // al useReducer se pasa el reducer y el initialState
   const [favorites, dispatch] = useReducer(favoriteReducer, initialState)
 
@@ -41,9 +48,29 @@ const Characters = () => {
     // fetchData()
   }, [])
 
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+  }
+
   const handleClick = (favorite) => {
     dispatch({ type: 'ADD_TO_FAVORITE', payload: favorite })
   }
+
+  // // filtrar los usuario
+  // const filteredUsers = characters.filter((user) => {
+  //   return user.name.toLowerCase().includes(search.toLowerCase())
+  // })
+
+  // usando Memo se opttmiza la buscqueda porque recuerda las busquedas pasadas,
+  // el 1 parametro es para la logica y el 2 paramatro queremos que escuche en
+  // los valores characters y search
+  const filteredUsers = useMemo(
+    () =>
+      characters.filter((user) =>
+        user.name.toLowerCase().includes(search.toLowerCase())
+      ),
+    [characters, search]
+  )
   return (
     <>
       <CharacterItems
@@ -53,9 +80,13 @@ const Characters = () => {
         isHidden={true}
         title="Favorites"
       />
+      <div className="Search">
+        <input type="text" value={search} onChange={handleSearch} />
+      </div>
+
       <CharacterItems
         theme={theme}
-        characters={characters}
+        characters={filteredUsers}
         handleClick={handleClick}
         isHidden={false}
         title="Characters"
