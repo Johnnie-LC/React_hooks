@@ -1,4 +1,4 @@
-const CharacterItems = ({ theme, characters, handleClick, hidden, title }) =>
+const CharacterItems = ({ theme, characters, handleClick, isHidden, title }) =>
   characters.length > 0 && (
     <>
       <h2
@@ -18,7 +18,7 @@ const CharacterItems = ({ theme, characters, handleClick, hidden, title }) =>
             <h3 className="Card-name">{character.name}</h3>
             <button
               type="button"
-              hidden={hidden}
+              hidden={isHidden}
               onClick={() => handleClick(character)}
             >
               add to Favorite

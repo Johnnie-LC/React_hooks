@@ -44,23 +44,20 @@ const Characters = () => {
   const handleClick = (favorite) => {
     dispatch({ type: 'ADD_TO_FAVORITE', payload: favorite })
   }
-
-  console.log('Favoritos: ', favorites.favorite)
-
   return (
     <>
       <CharacterItems
         theme={theme}
         characters={favorites.favorite}
         handleClick={handleClick}
-        hidden={true}
+        isHidden={true}
         title="Favorites"
       />
       <CharacterItems
         theme={theme}
         characters={characters}
         handleClick={handleClick}
-        hidden={false}
+        isHidden={false}
         title="Characters"
       />
     </>
