@@ -4,6 +4,7 @@ import React, {
   useContext,
   useReducer,
   useMemo,
+  useRef,
 } from 'react'
 import '../assets/styles/components/Characters.css'
 import ThemeContext from '../context/ThemeContext'
@@ -32,6 +33,9 @@ const Characters = () => {
   // al useReducer se pasa el reducer y el initialState
   const [favorites, dispatch] = useReducer(favoriteReducer, initialState)
 
+  // asignar referencias ne este caso será al input
+  const searchInput = useRef(null)
+
   useEffect(() => {
     fetch('https://rickandmortyapi.com/api/character')
       .then((response) => response.json())
@@ -48,8 +52,9 @@ const Characters = () => {
     // fetchData()
   }, [])
 
-  const handleSearch = (e) => {
-    setSearch(e.target.value)
+  // la mejor forma de usar input y formularios en ves de usar eventos es useRefs
+  const handleSearch = () => {
+    setSearch(searchInput.current.value)
   }
 
   const handleClick = (favorite) => {
@@ -81,7 +86,12 @@ const Characters = () => {
         title="Favorites"
       />
       <div className={`Search ${theme ? 'lightmode' : 'darkmode'}`}>
-        <input type="text" value={search} onChange={handleSearch} />
+        <input
+          type="text"
+          value={search}
+          ref={searchInput}
+          onChange={handleSearch}
+        />
       </div>
 
       <CharacterItems
